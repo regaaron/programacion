@@ -1,0 +1,35 @@
+#!/bin/sh
+clear
+usuario=''
+echo "--------------- MENU USUARIOS -----------------"
+echo "-----------------------------------------------"
+who -s | cut -f1,2 -d ' ' | cut -f1,1 -d ' '|nl
+echo "-----------------------------------------------"
+echo
+echo "Escribe el nombre de uno de los usuarios logeados en el sistema"
+echo "para ver su alias y la ruta de su carpeta personal."
+echo "Si ves algun usuario repetido es porque estas usando una"
+echo "terminal de comandos con ese usuario."
+echo
+echo -n "Usuario :"
+read usuario
+if [ -z $usuario ]; then
+echo
+echo "No se ha introducido ningun dato"
+echo
+else
+nombreu=$(grep ^$usuario /etc/passwd | cut -d ":" -f5 | cut -d "," -f1)
+homeu=$(grep ^$usuario /etc/passwd | cut -d ":" -f6 | cut -d "," -f1)
+if [ -z $nombreu ]; then
+echo
+echo "El nombre de usuario no existe"
+echo
+else
+echo "El nombre del usuario es :" $nombreu
+echo "El directorio personal es :" $homeu
+echo
+echo -n "Presiona una tecla para continuar..."
+read enterKey
+echo
+fi
+fi

@@ -1,0 +1,19 @@
+#!/bin/bash
+case $# in
+	0) echo "Sintaxis: watchfor  usuario";
+		exit 1;;
+esac
+until who | grep "$1"
+do
+	sleep 1
+done
+
+usuario=$1
+archivo="resp$(date +'%d%m%y-%H%M')"
+carpeta="/home/${usuario}"
+echo " "
+echo "Usuario: $usuario conectado."
+echo "Respaldando carpeta de $usuario (${archivo}.tar.gz)"
+echo " "
+tar -czvf "${archivo}.tar.gz" $carpeta
+echo "Termino respaldo"

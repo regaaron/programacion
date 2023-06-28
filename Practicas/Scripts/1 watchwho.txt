@@ -1,0 +1,12 @@
+new=/tmp/wwho1.$$
+old=/tmp/wwho2.$$
+who>$old
+
+while [ 1==1 ]
+do
+  who>$new
+  diff $old $new
+  mv $new $old
+  sleep 10
+done | awk  '/>/ { $1 = "in:     "; print }                 /</ { $1 = "out:    "; print }'
+

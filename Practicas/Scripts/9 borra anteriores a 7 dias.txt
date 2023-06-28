@@ -1,0 +1,8 @@
+#!/bin/bash
+case $# in
+0) echo "faltan argumentos";
+exit 1 
+;;
+esac
+
+cd $1 && { find . -type f -mtime +7 -exec rm -f -- {} \; ; }

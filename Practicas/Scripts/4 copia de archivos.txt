@@ -1,0 +1,17 @@
+#!/bin/bash
+if test $# -le 1; then
+echo “Argumentos no validos”
+exit
+fi
+if test –d $1; then
+carpeta=$1
+for i in $*;
+do
+if test –f $i; then
+cp $i $carpeta
+echo “Archivo $i copiado en $carpeta”
+fi
+done
+else
+echo “Argumento no valido”
+fi

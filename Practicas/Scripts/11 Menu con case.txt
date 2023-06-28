@@ -1,0 +1,15 @@
+clear
+echo "1.-Quien esta en el sistema?"
+echo "2.-Cuanto espacio en disco tengo?"
+echo "3.-Salir"
+echo "Presione la opcion deseada: \c"
+read opcion
+
+case "$opcion" in
+1) who;;
+2) df;;
+3) echo "Hasta Luego!";;
+*) echo "Opcion incorrecta!";;
+esac
+
+EXPORT opcion

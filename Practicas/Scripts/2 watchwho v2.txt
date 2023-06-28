@@ -1,0 +1,18 @@
+new=/tmp/wwho1.$$
+old=/tmp/wwho2.$$
+diferencia=/tmp/diff.$$
+who>$old
+
+while test 1 == 1
+do
+  who>$new
+  diff $old $new > $diferencia
+  awk -f wwho.awk $diferencia
+  mv $new $old
+  sleep 10
+done 
+
+
+wwho.awk
+/>/ { print "entra usuario: " $0 }
+/</ { print "sale usuario: " $0 }

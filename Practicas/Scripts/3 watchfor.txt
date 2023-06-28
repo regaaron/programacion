@@ -1,0 +1,10 @@
+case $# in
+0) echo "Sintaxis : watchfor usuario"
+exit 1;;
+esac
+until who | grep "$1"
+do 
+sleep 60
+done
+
+$watchfor armando garcia ruvalcaba 

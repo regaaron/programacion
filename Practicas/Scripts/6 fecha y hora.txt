@@ -1,0 +1,5 @@
+#!/bin/bash
+d=`date '+%d/%m/%y %H:%M:%S'`
+echo "FECHA Y HORA : $d"
+
+ 
